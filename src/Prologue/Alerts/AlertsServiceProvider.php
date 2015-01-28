@@ -11,8 +11,7 @@ class AlertsServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		// Register config file.
-		$this->app['config']->package('prologue/alerts', __DIR__.'/../../config');
+		$this->prepareResources();
 
 		// Register the AlertsMessageBag class.
 		$this->app['alerts'] = $this->app->share(function($app)
@@ -29,6 +28,20 @@ class AlertsServiceProvider extends ServiceProvider {
 	public function provides()
 	{
 		return array('alerts');
+	}
+
+	/**
+	 * Prepare the package resources.
+	 *
+	 * @return void
+	 */
+	protected function prepareResources()
+	{
+		$configPath = __DIR__ . '/../config/config.php';
+		$this->mergeConfigFrom('prologue.alerts', $configPath);
+		$this->publishes([
+			$configPath => config_path('prologue.alerts.php'),
+		]);
 	}
 
 }
