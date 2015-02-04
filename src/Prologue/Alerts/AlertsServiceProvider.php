@@ -37,8 +37,8 @@ class AlertsServiceProvider extends ServiceProvider {
 	 */
 	protected function prepareResources()
 	{
-		$configPath = __DIR__ . '/../config/config.php';
-		$this->mergeConfigFrom('prologue.alerts', $configPath);
+		$configPath = __DIR__ . '/../../config/config.php';
+		$this->mergeConfigFrom($configPath, 'prologue.alerts');
 		$this->publishes([
 			$configPath => config_path('prologue.alerts.php'),
 		]);
