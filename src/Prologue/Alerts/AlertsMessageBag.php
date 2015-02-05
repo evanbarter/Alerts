@@ -66,7 +66,7 @@ class AlertsMessageBag extends MessageBag {
 	 */
 	public function getLevels()
 	{
-		return (array) $this->config->get('alerts::levels');
+		return (array) $this->config->get('alerts.levels');
 	}
 
 	/**
@@ -76,7 +76,7 @@ class AlertsMessageBag extends MessageBag {
 	 */
 	protected function getSessionKey()
 	{
-		return $this->config->get('alerts::session_key');
+		return $this->config->get('alerts.session_key');
 	}
 
 	/**
